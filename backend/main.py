@@ -5,25 +5,22 @@ import pandas as pd
 import numpy as np
 from fastapi.middleware.cors import CORSMiddleware
 
-# Initialize FastAPI app
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000", # Your Next.js frontend
-    # "http://localhost", # If your frontend is served from root localhost
-    # "http://127.0.0.1:3000", # Another common localhost address
-    # Add any other origins where your frontend might be hosted in production
+    "http://localhost:3000",
     "https://heart-disease-predictor-five.vercel.app/"
 ]
 
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins, # List of origins that are allowed to make requests
-    allow_credentials=True, # Allow cookies to be included in cross-origin requests
-    allow_methods=["*"], # Allow all methods (GET, POST, PUT, DELETE, etc.)
-    allow_headers=["*"], # Allow all headers
+    allow_origins=origins, 
+    allow_credentials=True, 
+    allow_methods=["*"],
+    allow_headers=["*"], 
 )
-# Load the trained model, scaler, and columns
+
 try:
     model = joblib.load('KNN_heart.pkl')
     scaler = joblib.load('scaler.pkl')
