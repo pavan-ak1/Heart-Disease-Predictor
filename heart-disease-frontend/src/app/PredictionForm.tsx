@@ -76,7 +76,7 @@ const PredictionForm: React.FC = () => {
     setPredictionResult(null);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/predict_heart_disease/`, { // Ensure this URL matches your FastAPI backend
+      const response = await fetch(`${API_BASE_URL}/predict_heart_disease/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,9 +91,14 @@ const PredictionForm: React.FC = () => {
 
       const data: PredictionResult = await response.json();
       setPredictionResult(data);
-    } catch (err: any) {
-      setError(err.message || 'Failed to fetch prediction.');
-      console.error('Prediction error:', err);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message || 'Failed to fetch prediction.');
+        console.error('Prediction error:', err.message);
+      } else {
+        setError('Failed to fetch prediction.');
+        console.error('Prediction error:', err);
+      }
     } finally {
       setLoading(false);
     }
@@ -345,6 +350,5 @@ const resultStyle: React.CSSProperties = {
   marginBottom: '10px',
   lineHeight: '1.5',
 };
-
 
 export default PredictionForm;
