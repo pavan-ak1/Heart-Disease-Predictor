@@ -13,6 +13,7 @@ origins = [
     # "http://localhost", # If your frontend is served from root localhost
     # "http://127.0.0.1:3000", # Another common localhost address
     # Add any other origins where your frontend might be hosted in production
+    "https://heart-disease-predictor-five.vercel.app/"
 ]
 
 app.add_middleware(
