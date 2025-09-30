@@ -9,17 +9,17 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",
-    "https://heart-disease-predictor-five.vercel.app/"
+    "https://heart-disease-predictor-five.vercel.app"
 ]
-
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins, 
-    allow_credentials=True, 
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"], 
+    allow_headers=["*"],
 )
+
 
 try:
     model = joblib.load('KNN_heart.pkl')
