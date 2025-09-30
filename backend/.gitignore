@@ -1,0 +1,25 @@
+# Environment variables
+.env
+.env.local
+
+# Python-specific
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pip_cache/
+
+# Build artifacts
+dist/
+build/
+
+# IDE and editor-specific
+.vscode/
+.idea/
+*~
+.#*
+
+# Logs and temporary data
+*.log
+media/
+uploads/
